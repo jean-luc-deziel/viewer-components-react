@@ -1,6 +1,14 @@
 import { coverageConfigDefaults, defineConfig } from "vitest/config";
+import path from "path";
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      // zod-to-json-schema@3.25+ tries to import "zod/v3" (a Zod v4 compat path)
+      // which doesn't exist in zod@3.24. Map it to zod itself as a shim.
+      "zod/v3": path.resolve("node_modules/zod"),
+    },
+  },
   test: {
     globals: true,
     environment: "jsdom",

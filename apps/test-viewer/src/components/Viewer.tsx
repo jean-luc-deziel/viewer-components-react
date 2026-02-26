@@ -12,6 +12,7 @@ import { FrontendDevTools } from "@itwin/frontend-devtools";
 import { ArcGisAccessClient } from "@itwin/map-layers-auth";
 import { QuantityFormatting } from "@itwin/quantity-formatting-react";
 import { ViewerStatusbarItemsProvider, Viewer as WebViewer } from "@itwin/web-viewer-react";
+import { initMcpClient } from "../mcp-client";
 import { unifiedSelectionStorage } from "../SelectionStorage";
 import { getUiProvidersConfig } from "../UiProvidersConfig";
 import { ApiKeys } from "./ApiKeys";
@@ -81,6 +82,10 @@ function ViewerWithOptions() {
 
     IModelApp.mapLayerFormatRegistry.setAccessClient("ArcGIS", accessClient);
     IModelApp.mapLayerFormatRegistry.setAccessClient("ArcGISFeature", accessClient);
+
+    // Start the MCP server in the background using InMemoryTransport
+    await initMcpClient();
+
     setUiConfig(providersConfig);
   }, []);
 
