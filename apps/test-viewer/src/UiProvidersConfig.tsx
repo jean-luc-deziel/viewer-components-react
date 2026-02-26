@@ -38,6 +38,7 @@ import {
   TreeWidget,
   TreeWidgetComponent,
 } from "@itwin/tree-widget-react";
+import { McpChatWidget } from "./components/McpChatWidget";
 import { CustomizeFormatPropertyContextMenuItem } from "./components/quantity-formatting/FormatPropertyContextMenuItem";
 import { RepositoriesTreeComponent } from "./components/repositories-tree/RepositoriesTree";
 import { useViewerOptionsContext } from "./components/ViewerOptions";
@@ -323,6 +324,30 @@ const configuredUiItems = new Map<string, UiItem>([
           reportingBasePath: prefixUrl(REPORTS_CONFIG_BASE_URL, import.meta.env.IMJS_URL_PREFIX),
           carbonCalculationBasePath: prefixUrl(REPORTS_CONFIG_BASE_URL, import.meta.env.IMJS_URL_PREFIX),
         }),
+      ],
+    },
+  ],
+  [
+    "mcp-chat",
+    {
+      initialize: async () => {},
+      createUiItemsProviders: () => [
+        {
+          id: "McpChatProvider",
+          getWidgets: () => [
+            {
+              id: "mcp-chat",
+              label: "Map Layers AI",
+              layouts: {
+                standard: {
+                  section: StagePanelSection.Start,
+                  location: StagePanelLocation.Bottom,
+                },
+              },
+              content: <McpChatWidget />,
+            },
+          ],
+        },
       ],
     },
   ],

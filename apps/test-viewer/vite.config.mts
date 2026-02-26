@@ -53,6 +53,11 @@ export default defineConfig(({ mode }) => {
           find: /^~(.*)$/,
           replacement: "$1",
         },
+        {
+          // zod-to-json-schema@3.25+ imports "zod/v3" which doesn't exist in zod@3.24.x
+          find: "zod/v3",
+          replacement: "zod",
+        },
       ],
     },
     envPrefix: ENV_PREFIX,

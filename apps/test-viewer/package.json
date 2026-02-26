@@ -30,6 +30,7 @@
     "@itwin/itwinui-illustrations-react": "^2.1.0",
     "@itwin/itwinui-react": "3.20.1",
     "@itwin/map-layers": "workspace:*",
+    "@modelcontextprotocol/sdk": "1.11.0",
     "@itwin/map-layers-auth": "^5.5.2",
     "@itwin/map-layers-formats": "^5.5.2",
     "@itwin/measure-tools-react": "workspace:*",
